@@ -1,5 +1,7 @@
-<html lang="en"><head>
-    <title>Code coverage report for node-npmtest-twitter/twitter/lib/parser.js</title>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-twitter/node_modules/twitter/lib/parser.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -192,7 +194,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-twitter">npmtest-twitter (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-twitter/twitter/lib/parser.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-twitter/node_modules/twitter/lib/parser.js</span></h1>
     <h2>
         
         Statements: <span class="metric">21.43% <small>(6 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,11 +210,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-twitter/twitter/lib/</a> » parser.js</div>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-twitter/node_modules/twitter/lib/</a> &#187; parser.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tbody><tr><td class="line-count">1
+<tr><td class="line-count">1
 2
 3
 4
@@ -372,11 +374,11 @@
 &nbsp;
 var EventEmitter = require('events').EventEmitter;
 &nbsp;
-var Parser = module.exports = <span class="fstat-no" title="function not covered">function Parser() {</span>
+var Parser = module.exports = <span class="fstat-no" title="function not covered" >function Parser() {</span>
   // Make sure we call our parents constructor
-<span class="cstat-no" title="statement not covered">  EventEmitter.call(this);</span>
-<span class="cstat-no" title="statement not covered">  this.buffer = '';</span>
-<span class="cstat-no" title="statement not covered">  return this;</span>
+<span class="cstat-no" title="statement not covered" >  EventEmitter.call(this);</span>
+<span class="cstat-no" title="statement not covered" >  this.buffer = '';</span>
+<span class="cstat-no" title="statement not covered" >  return this;</span>
 };
 &nbsp;
 // The parser emits events!
@@ -385,55 +387,54 @@ Parser.prototype = Object.create(EventEmitter.prototype);
 Parser.END        = '\r\n';
 Parser.END_LENGTH = 2;
 &nbsp;
-Parser.prototype.receive = <span class="fstat-no" title="function not covered">function receive(buffer) {</span>
-<span class="cstat-no" title="statement not covered">  this.buffer += buffer.toString('utf8');</span>
-<span class="cstat-no" title="statement not covered">  var index, json;</span>
+Parser.prototype.receive = <span class="fstat-no" title="function not covered" >function receive(buffer) {</span>
+<span class="cstat-no" title="statement not covered" >  this.buffer += buffer.toString('utf8');</span>
+<span class="cstat-no" title="statement not covered" >  var index, json;</span>
 &nbsp;
   // We have END?
-<span class="cstat-no" title="statement not covered">  while ((index = this.buffer.indexOf(Parser.END)) &gt; -1) {</span>
-<span class="cstat-no" title="statement not covered">    json = this.buffer.slice(0, index);</span>
-<span class="cstat-no" title="statement not covered">    this.buffer = this.buffer.slice(index + Parser.END_LENGTH);</span>
-<span class="cstat-no" title="statement not covered">    if (json.length &gt; 0) {</span>
-<span class="cstat-no" title="statement not covered">      try {</span>
-<span class="cstat-no" title="statement not covered">        json = JSON.parse(json);</span>
+<span class="cstat-no" title="statement not covered" >  while ((index = this.buffer.indexOf(Parser.END)) &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered" >    json = this.buffer.slice(0, index);</span>
+<span class="cstat-no" title="statement not covered" >    this.buffer = this.buffer.slice(index + Parser.END_LENGTH);</span>
+<span class="cstat-no" title="statement not covered" >    if (json.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        json = JSON.parse(json);</span>
         // Event message
-<span class="cstat-no" title="statement not covered">        if (json.event !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >        if (json.event !== undefined) {</span>
           // First emit specific event
-<span class="cstat-no" title="statement not covered">          this.emit(json.event, json);</span>
+<span class="cstat-no" title="statement not covered" >          this.emit(json.event, json);</span>
           // Now emit catch-all event
-<span class="cstat-no" title="statement not covered">          this.emit('event', json);</span>
+<span class="cstat-no" title="statement not covered" >          this.emit('event', json);</span>
         }
         // Delete message
-        else <span class="cstat-no" title="statement not covered">if (json.delete !== undefined) {</span>
-<span class="cstat-no" title="statement not covered">          this.emit('delete', json);</span>
+        else <span class="cstat-no" title="statement not covered" >if (json.delete !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >          this.emit('delete', json);</span>
         }
         // Friends message (beginning of stream)
-        else <span class="cstat-no" title="statement not covered">if (json.friends !== undefined || json.friends_str !== undefined) {</span>
-<span class="cstat-no" title="statement not covered">          this.emit('friends', json);</span>
+        else <span class="cstat-no" title="statement not covered" >if (json.friends !== undefined || json.friends_str !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >          this.emit('friends', json);</span>
         }
         // Any other message
         else {
-<span class="cstat-no" title="statement not covered">          this.emit('data', json);</span>
+<span class="cstat-no" title="statement not covered" >          this.emit('data', json);</span>
         }
       }
       catch (error) {
-<span class="cstat-no" title="statement not covered">        error.source = json;</span>
-<span class="cstat-no" title="statement not covered">        this.emit('error', error);</span>
+<span class="cstat-no" title="statement not covered" >        error.source = json;</span>
+<span class="cstat-no" title="statement not covered" >        this.emit('error', error);</span>
       }
     }
     else {
       // Keep Alive
-<span class="cstat-no" title="statement not covered">      this.emit('ping');</span>
+<span class="cstat-no" title="statement not covered" >      this.emit('ping');</span>
     }
   }
 };
 &nbsp;
 &nbsp;</pre></td></tr>
-</tbody></table></pre>
+</table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 07:56:27 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sun Apr 16 2017 08:51:31 GMT+0000 (UTC)</div>
 </div>
-
-
-</body></html>
+</body>
+</html>
